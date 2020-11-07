@@ -2,7 +2,7 @@ package com.example.trashclassify.model;
 
 import androidx.annotation.NonNull;
 
-public class Trash {
+public class Trash implements Comparable<Trash> {
     /**
      * 1 (可回收垃圾)
      * 2 (有害垃圾)
@@ -35,7 +35,7 @@ public class Trash {
                     str = "有害垃圾";
                     break;
                 case 4:
-                    str = "湿垃圾";
+                    str = "湿垃圾/厨余垃圾";
                     break;
                 case 8:
                     str = "干垃圾";
@@ -48,8 +48,8 @@ public class Trash {
         }
     }
 
-    public String name;
-    public TrashType type;
+    private String name;
+    private TrashType type;
 
     public Trash() {}
 
@@ -79,4 +79,10 @@ public class Trash {
     public String toString() {
         return name + "是" + type.toString();
     }
+
+    @Override
+    public int compareTo(Trash o) {
+        return type.value - o.getType().value;
+    }
+
 }
