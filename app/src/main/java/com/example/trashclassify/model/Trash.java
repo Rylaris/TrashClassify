@@ -1,5 +1,7 @@
 package com.example.trashclassify.model;
 
+import androidx.annotation.NonNull;
+
 public class Trash {
     /**
      * 1 (可回收垃圾)
@@ -8,7 +10,7 @@ public class Trash {
      * 8 (干垃圾)
      * 16 (大件垃圾)
      */
-    enum TrashType {
+    public enum TrashType {
         recyclable(1),
         harmful(2),
         wet(4),
@@ -19,6 +21,30 @@ public class Trash {
 
         private TrashType(int value) {
             this.value = value;
+        }
+
+        @NonNull
+        @Override
+        public String toString() {
+            String str = "未知垃圾";
+            switch (value) {
+                case 1:
+                    str = "可回收垃圾";
+                    break;
+                case 2:
+                    str = "有害垃圾";
+                    break;
+                case 4:
+                    str = "湿垃圾";
+                    break;
+                case 8:
+                    str = "干垃圾";
+                    break;
+                case 16:
+                    str = "大件垃圾";
+                    break;
+            }
+            return str;
         }
     }
 
@@ -46,5 +72,11 @@ public class Trash {
 
     public void setType(TrashType type) {
         this.type = type;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name + "是" + type.toString();
     }
 }
