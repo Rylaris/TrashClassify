@@ -7,12 +7,26 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <SearchView
-        android:id="@+id/searchView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:iconifiedByDefault="false"
-        android:queryHint="请输入搜索内容" />
+        android:orientation="horizontal">
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:iconifiedByDefault="false"
+            android:queryHint="搜索" />
+
+        <Spinner
+            android:id="@+id/trash_spinner"
+            android:entries="@array/trash_array"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
 
     <ListView
         android:id="@+id/trash_list"

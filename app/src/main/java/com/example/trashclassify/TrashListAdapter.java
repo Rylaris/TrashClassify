@@ -27,7 +27,27 @@ public class TrashListAdapter extends BaseAdapter implements Filterable {
     private int resourceId;
     private Context context;
     private Filter filter;
-    private ArrayList<Trash> trashes, tempTrashes;
+    private ArrayList<Trash> trashes;
+
+    public ArrayList<Trash> getTrashes() {
+        return trashes;
+    }
+
+    public void setTrashes(ArrayList<Trash> trashes) {
+        this.trashes = trashes;
+        this.tempTrashes = trashes;
+        notifyDataSetChanged();
+    }
+
+    public ArrayList<Trash> getTempTrashes() {
+        return tempTrashes;
+    }
+
+    public void setTempTrashes(ArrayList<Trash> tempTrashes) {
+        this.tempTrashes = tempTrashes;
+    }
+
+    private ArrayList<Trash> tempTrashes;
     private TrashService service;
     private final static String TAG = "TrashListAdapter";
 
@@ -41,7 +61,7 @@ public class TrashListAdapter extends BaseAdapter implements Filterable {
 
     @Override
     public int getCount() {
-        return trashes.size();
+        return trashes == null ? 0 : trashes.size();
     }
 
     @Override

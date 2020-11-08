@@ -59,9 +59,9 @@ public class TrashService {
         return trashes;
     }
 
-    public ArrayList<Trash> classifyTrash(Trash.TrashType type) {
+    public ArrayList<Trash> classifyTrash(ArrayList<Trash> dataSet, Trash.TrashType type) {
         ArrayList<Trash> result = new ArrayList<>();
-        for (Trash trash : trashes) {
+        for (Trash trash : dataSet) {
             if (trash.getType() == type) {
                 result.add(trash);
             }
@@ -72,14 +72,14 @@ public class TrashService {
     public ArrayList<Trash> search(ArrayList<Trash> dataSet, String keywords) {
         ArrayList<Trash> result = new ArrayList<>();
         char[] chars = keywords.toLowerCase().toCharArray();
-        StringBuilder temp = new StringBuilder("^");
+        StringBuilder temp = new StringBuilder("^\\w*");
         for (char ch : chars) {
             temp.append(ch);
             temp.append("\\w*");
         }
         temp.append("$");
         String pattern = temp.toString();
-        for (Trash trash : trashes) {
+        for (Trash trash : dataSet) {
             if (Pattern.matches(pattern, trash.getName().toLowerCase()) ||
                     Pattern.matches(pattern, Util.ChineseToPinYin(trash.getName()).toLowerCase())) {
                 result.add(trash);

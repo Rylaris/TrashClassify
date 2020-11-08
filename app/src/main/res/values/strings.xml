@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">TrashClassify</string>
+
+    <string-array name="trash_array">
+        <item>全部垃圾</item>
+        <item>可回收垃圾</item>
+        <item>有害垃圾</item>
+        <item>湿垃圾</item>
+        <item>干垃圾</item>
+        <item>大件垃圾</item>
+    </string-array>
 </resources>
