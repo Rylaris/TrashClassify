@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 public class TrashService {
     private ArrayList<Trash> trashes;
     private static final String TAG = "TrashService";
+    private static final String CSVPath = "garbage.csv";
 
     public ArrayList<Trash> readCSV(AssetManager manager) {
         Log.d(TAG, "readCSV: Read CSV begin");
@@ -21,7 +22,7 @@ public class TrashService {
         Scanner scanner;
         InputStream inputStream;
         try {
-            inputStream = manager.open("garbage.csv");
+            inputStream = manager.open(CSVPath);
             scanner = new Scanner(inputStream, "UTF-8");
             while (scanner.hasNext()) {
                 String sourceString = scanner.nextLine();
@@ -68,7 +69,7 @@ public class TrashService {
         return result;
     }
 
-    public ArrayList<Trash> search(String keywords) {
+    public ArrayList<Trash> search(ArrayList<Trash> dataSet, String keywords) {
         ArrayList<Trash> result = new ArrayList<>();
         char[] chars = keywords.toLowerCase().toCharArray();
         StringBuilder temp = new StringBuilder("^");
@@ -80,12 +81,10 @@ public class TrashService {
         String pattern = temp.toString();
         for (Trash trash : trashes) {
             if (Pattern.matches(pattern, trash.getName().toLowerCase()) ||
-                    Pattern.matches(pattern, Util.ChineseToPinYin(trash.getName()).toLowerCase()) ||
-                    Pattern.matches(pattern, trash.getType().toString())) {
+                    Pattern.matches(pattern, Util.ChineseToPinYin(trash.getName()).toLowerCase())) {
                 result.add(trash);
             }
         }
-        Log.d(TAG, "search: Search result: " + result.toString());
         return result;
     }
 }
