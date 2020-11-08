@@ -3,4 +3,15 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="recyclable">#1371BF</color>
+    <color name="harmful">#FC583E</color>
+    <color name="wet">#2DAA5A</color>
+    <color name="dry">#42413C</color>
+    <color name="bulky">#42413C</color>
+<!--        unknown(0),-->
+<!--    recyclable(1),-->
+<!--    harmful(2),-->
+<!--    wet(4),-->
+<!--    dry(8),-->
+<!--    bulky(16);-->
 </resources>

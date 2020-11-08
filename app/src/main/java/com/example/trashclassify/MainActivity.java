@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.trashclassify.model.Trash;
+import com.example.trashclassify.util.TrashService;
 import com.example.trashclassify.util.Util;
 
 import java.util.ArrayList;
@@ -16,16 +17,19 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     ArrayList<Trash> trashes;
+    TrashService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        trashes = Util.readCSV(getAssets());
+        service = new TrashService();
+        trashes = service.readCSV(getAssets());
         TrashListAdapter adapter = new TrashListAdapter(MainActivity.this, R.layout.trash_item, trashes);
         ListView trashList = findViewById(R.id.trash_list);
         trashList.setOnItemClickListener(this);
         trashList.setAdapter(adapter);
+        service.search("sb");
     }
 
     @Override

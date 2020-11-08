@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import com.example.trashclassify.model.Trash;
 
@@ -18,9 +19,11 @@ public class TrashListAdapter extends ArrayAdapter<Trash> {
 
 
     private int resourceId;
+    private Context context;
 
     public TrashListAdapter(@NonNull Context context, int resource, ArrayList<Trash> trashes) {
         super(context, resource, trashes);
+        this.context = context;
         this.resourceId = resource;
     }
 
@@ -41,6 +44,23 @@ public class TrashListAdapter extends ArrayAdapter<Trash> {
         }
         if (trash != null) {
             viewHolder.trashName.setText(trash.getName());
+            switch (trash.getType()) {
+                case recyclable:
+                    viewHolder.trashName.setTextColor(ContextCompat.getColor(context, R.color.recyclable));
+                    break;
+                case harmful:
+                    viewHolder.trashName.setTextColor(ContextCompat.getColor(context, R.color.harmful));
+                    break;
+                case dry:
+                    viewHolder.trashName.setTextColor(ContextCompat.getColor(context, R.color.dry));
+                    break;
+                case wet:
+                    viewHolder.trashName.setTextColor(ContextCompat.getColor(context, R.color.wet));
+                    break;
+                case bulky:
+                    viewHolder.trashName.setTextColor(ContextCompat.getColor(context, R.color.bulky));
+                    break;
+            }
         }
         return view;
     }

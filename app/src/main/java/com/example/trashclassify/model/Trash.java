@@ -11,6 +11,7 @@ public class Trash implements Comparable<Trash> {
      * 16 (大件垃圾)
      */
     public enum TrashType {
+        unknown(0),
         recyclable(1),
         harmful(2),
         wet(4),
