@@ -2,7 +2,9 @@ package com.example.trashclassify.model;
 
 import androidx.annotation.NonNull;
 
-public class Trash implements Comparable<Trash> {
+import java.io.Serializable;
+
+public class Trash implements Comparable<Trash>, Serializable {
     /**
      * 1 (可回收垃圾)
      * 2 (有害垃圾)

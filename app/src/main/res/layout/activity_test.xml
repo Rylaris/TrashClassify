@@ -312,4 +312,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="提交"/>
+
+    <Button
+        android:id="@+id/again"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="再来五题"/>
 </LinearLayout>

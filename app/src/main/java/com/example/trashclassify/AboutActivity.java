@@ -8,7 +8,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.trashclassify.model.Trash;
+
+import java.util.ArrayList;
+import java.util.Random;
+
 public class AboutActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,7 @@ public class AboutActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == R.id.test) {
             Intent intent = new Intent(AboutActivity.this, TestActivity.class);
+
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
