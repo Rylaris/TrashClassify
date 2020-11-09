@@ -18,7 +18,7 @@ import java.util.Scanner;
 
 public class Util {
 
-    private static final String TAG = "Util";
+    private static final String TAG = "TrashUtil";
 
     public static ArrayList<Trash> readCSV(AssetManager manager) {
         Log.d(TAG, "readCSV: Read begin");

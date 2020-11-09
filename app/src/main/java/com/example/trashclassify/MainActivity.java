@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
+        inflater.inflate(R.menu.about, menu);
         return true;
     }
 
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+    @Overridegit
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String[] array = getResources().getStringArray(R.array.trash_array);
         Trash.TrashType type = Trash.TrashType.unknown;
