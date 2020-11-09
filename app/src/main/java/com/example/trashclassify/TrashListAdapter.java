@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -79,7 +78,7 @@ public class TrashListAdapter extends BaseAdapter implements Filterable {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         Trash trash = (Trash) getItem(position);
         ViewHolder viewHolder;
-        View view ;
+        View view;
         if (convertView == null) {
             view = LayoutInflater.from(context).inflate(resourceId, parent, false);
             viewHolder = new ViewHolder();

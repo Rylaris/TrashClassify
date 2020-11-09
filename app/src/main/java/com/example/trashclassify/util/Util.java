@@ -6,13 +6,14 @@ import android.util.Log;
 import com.example.trashclassify.model.Trash;
 
 import net.sourceforge.pinyin4j.PinyinHelper;
-import net.sourceforge.pinyin4j.format.*;
+import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
+import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
+import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -20,6 +21,12 @@ public class Util {
 
     private static final String TAG = "TrashUtil";
 
+    /**
+     * 读取保存在CSV文件中的垃圾分类信息
+     *
+     * @param manager 素材管理者
+     * @return 返回一个数组包含所有垃圾
+     */
     public static ArrayList<Trash> readCSV(AssetManager manager) {
         Log.d(TAG, "readCSV: Read begin");
         ArrayList<Trash> trashes = new ArrayList<>();
@@ -55,6 +62,13 @@ public class Util {
         return trashes;
     }
 
+    /**
+     * 对给定数据集的垃圾按给定类别进行分类
+     *
+     * @param trashes 数据集
+     * @param type 类别
+     * @return 分类后的垃圾
+     */
     public static ArrayList<Trash> classifyTrash(ArrayList<Trash> trashes, Trash.TrashType type) {
         ArrayList<Trash> result = new ArrayList<>();
         for (Trash trash : trashes) {
@@ -65,6 +79,16 @@ public class Util {
         return result;
     }
 
+    /**
+     * 将给定的字符串转换为拼音字符串
+     *
+     * 举例：
+     * 字符串 -> zifuchuan
+     * 卡拉OK -> kalaOK
+     *
+     * @param str 原字符串
+     * @return 拼音字符串
+     */
     public static String ChineseToPinYin(String str) {
         HanyuPinyinOutputFormat outputF = new HanyuPinyinOutputFormat();
         outputF.setToneType(HanyuPinyinToneType.WITHOUT_TONE);

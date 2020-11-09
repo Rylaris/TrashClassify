@@ -16,6 +16,12 @@ public class TrashService {
     private static final String TAG = "TrashService";
     private static final String CSVPath = "garbage.csv";
 
+    /**
+     * 读取保存在CSV文件中的垃圾分类信息
+     *
+     * @param manager 素材管理者
+     * @return 返回一个数组包含所有垃圾
+     */
     public ArrayList<Trash> readCSV(AssetManager manager) {
         Log.d(TAG, "readCSV: Read CSV begin");
         trashes = new ArrayList<>();
@@ -44,7 +50,7 @@ public class TrashService {
                     type = Trash.TrashType.wet;
                 } else if (i == Trash.TrashType.dry.value) {
                     type = Trash.TrashType.dry;
-                } else if (i == Trash.TrashType.bulky.value){
+                } else if (i == Trash.TrashType.bulky.value) {
                     type = Trash.TrashType.bulky;
                 } else {
                     type = Trash.TrashType.unknown;
@@ -59,16 +65,22 @@ public class TrashService {
         return trashes;
     }
 
-    public ArrayList<Trash> classifyTrash(ArrayList<Trash> dataSet, Trash.TrashType type) {
-        ArrayList<Trash> result = new ArrayList<>();
-        for (Trash trash : dataSet) {
-            if (trash.getType() == type) {
-                result.add(trash);
-            }
-        }
-        return result;
-    }
-
+    /**
+     * 用给定关键字在给定数据集中搜索垃圾
+     *
+     * 举例：
+     * 华为手机可以被以下关键字搜索到：
+     * 华为
+     * 华机
+     * 华手机
+     * huawei
+     * hw
+     * hwsj
+     *
+     * @param dataSet 数据集
+     * @param keywords 关键字
+     * @return 搜索结果
+     */
     public ArrayList<Trash> search(ArrayList<Trash> dataSet, String keywords) {
         ArrayList<Trash> result = new ArrayList<>();
         char[] chars = keywords.toLowerCase().toCharArray();

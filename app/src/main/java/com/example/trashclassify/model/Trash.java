@@ -54,7 +54,8 @@ public class Trash implements Comparable<Trash>, Serializable {
     private String name;
     private TrashType type;
 
-    public Trash() {}
+    public Trash() {
+    }
 
     public Trash(String name, TrashType type) {
         this.name = name;
